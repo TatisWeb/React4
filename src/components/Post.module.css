@@ -1,0 +1,57 @@
+.btn{
+    display: flex;
+    margin: 20px;
+}
+
+
+.active {
+    color:red;
+}
+.text_logo {
+    color : red;
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.item {
+    margin: 20px;
+    display: flex;
+    color: green;
+}
+
+.item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.dialogs img {
+    
+    width: 100px;
+    height: 50px;
+}
+
+.img-dialogs {
+    width: 100px;
+    height: auto;
+}
+
+.untext {
+    color: white;
+}
+
+.dialogs {
+    
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    background-color: blue;
+    color:white;
+    margin-top: 20px;
+}
+
+
+.img-post{
+    margin: 20px;
+    padding: 20px;
+}
+
