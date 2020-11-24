@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './Post.module.css';
 
 const Myposts = (props) =>{
     let postsElements = 

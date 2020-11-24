@@ -1,15 +1,16 @@
 import ReactDom from "react-dom";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import store from './components/state.js';
-import App from   './components/App.js';
+import store from "./components/state.js";
+import App from "./components/App.js";
 
 let renderEntireTree = (state) => {
   ReactDom.render(
     <BrowserRouter>
-      <App store={store}
+      <App
         state={state}
-        dispatch={store.dispatch.bind(store)}
+        addPost={store.addPost.bind(store)}
+        addMessage={store.addMessage.bind(store)}
       />
     </BrowserRouter>,
     document.getElementById("root")
@@ -18,6 +19,6 @@ let renderEntireTree = (state) => {
 
 renderEntireTree(store.getState());
 
-store.Subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
 
 export default renderEntireTree;

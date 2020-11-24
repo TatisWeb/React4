@@ -1,41 +1,30 @@
 import React from 'react';
 import s from './Post.module.css';
-import {addMessage} from './state';
-import {addPost} from './state';
-
-const PostText = (props) =>{
-return <div className={s.untext}>{props.likeCount} </div>
-}
+import {addNewPostCreator, updateNewPostCreator} from './state';
 
 const ProfileName = (props) =>{
-return <div className={s.untext}>{props.name} </div>
-
+return <div className={s.untext}>{props.message} </div>
 }
 
-
 const Post = (props) => { 
+  
+  let state = props.store.getState().profilePage;
 
-    let profileElements = props.state.profiles.map( f => 
-     <ProfileName name={f.name} id={f.id} />);
-      
-    let postElements = props.state.posts.map( p =>
-     <PostText likeCount={p.likeCount} id={p.id} />);
-
-
-let newPostElement = React.createRef();
-
-let addPost = () => {
-    let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = '';
-};
-
-let addMessage = () =>{
-    let text = newPostElement.current.value;
-    props.addMessage(text);
-    newPostElement.current.value = '';
-};
-
+  let profileElements = state.posts.map( f => 
+     <ProfileName message={f.message} id={f.id} />);
+  
+  let newPostText = state.newPostText;
+  
+  
+  let onSendNewMessage = (e) =>{
+  let text = e.target.value;
+    props.store.dispatch(updateNewPostCreator(text));
+    
+  
+    }
+  let onClickNewPost = () => {props.store.dispatch(addNewPostCreator())
+      };
+    
 
 
 
@@ -45,13 +34,17 @@ let addMessage = () =>{
      <div className={s.item}> 
     
      <img className="img-post" src="https://i.ibb.co/Fzxbqzn/nastol-com-ua-138035.jpg" alt="post"/>
-     <div> Like { postElements } </div>
+       <p > New Post</p>
      <div> Name { profileElements } </div>
      </div>
      
      <div className={s.btn}>
-     <textarea ref={newPostElement}></textarea>
-     <button onClick={addPost }>Add New Message </button>   
+     <textarea placeholder='send new message'
+     onChange={onSendNewMessage}
+     value={newPostText}
+     
+       ></textarea>
+     <button onClick={onClickNewPost}>Add New Message </button>   
      </div>
      
     </div>);

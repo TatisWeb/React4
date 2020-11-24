@@ -8,15 +8,15 @@
     color:red;
 }
 .text_logo {
-    color : red;
-    font-size: 15px;
+    color : orange;
+    font-size: 25px;
     font-weight: 900;
 }
 
 .item {
     margin: 20px;
     display: flex;
-    color: green;
+    color: blue;
 }
 
 .item img {
@@ -50,7 +50,19 @@
 }
 
 
+h3 {
+  color: red;
+  font-size: 25px;
+  margin: 10px;
+  }
+
+p {
+  color: blue;
+  font-size: 15px;
+  }
+  
 .img-post{
+    height: 200px;
     margin: 20px;
     padding: 20px;
 }
