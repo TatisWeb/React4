@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Post.module.css';
-import {addNewPostCreator, updateNewPostCreator} from './state';
+import {addNewPostCreator, updateNewPostCreator} from '../redux/profile-reducer';
 
 const ProfileName = (props) =>{
 return <div className={s.untext}>{props.message} </div>

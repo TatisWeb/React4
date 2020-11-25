@@ -1,7 +1,7 @@
 import ReactDom from "react-dom";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import store from './components/state.js';
+import store from './components/Redux-store.js';
 import App from   './components/App.js';
 
 let renderEntireTree = (state) => {
@@ -18,6 +18,10 @@ let renderEntireTree = (state) => {
 
 renderEntireTree(store.getState());
 
-store.Subscribe(renderEntireTree);
+store.subscribe( () => {
+  let state = store.getState();
+  renderEntireTree(state);
+
+} );
 
 export default renderEntireTree;

@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Header from './Header';
 import Profile from './Profile';
 import React from 'react';
-import store from './state';
+import store from './Redux-store';
 import './App.css';
 import Post from './Post';
 import { BrowserRouter, Route } from 'react-router-dom';

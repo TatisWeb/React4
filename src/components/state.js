@@ -74,27 +74,7 @@ let store = {
     return this._state;
     }
   
-    
-  //  dispatch(action) {
-  //   if else {action.type === UPDATE_NEW_MESSAGE_BODY}{dialogs
-   //      this.state.dialogs.newMessegeBody = action.body
-         
-    // }
     }
- 
-
-export const addNewPostCreator = () => ({
-    type: ADD_POST});
-
-export const updateNewPostCreator = (text) => ({
-    type: UPDATE_NEW_POST ,
-    newText: text
-    });
-export const sendMessageCreator = () =>({
-  type: SEND_MESSAGE});
- 
-export const updateNewMessageBodyCreator = (body)=>({
-  type: UPDATE_NEW_MESSAGE_BODY , body:body  });
 
   
 export default store;
