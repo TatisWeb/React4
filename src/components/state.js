@@ -1,7 +1,11 @@
+import profileReducer from '../redux/profile-reducer';
+import dialogsReducer from '../redux/dialogs-reducer';
+
 const UPDATE_NEW_POST = 'UPDATE_NEW_POST';
 const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
+
 
 let store = {
   
@@ -54,30 +58,12 @@ let store = {
       },
 
     dispatch (action) {
-      if (action.type === 'ADD_POST') {
-        
-      let text = 
-this._state.profilePage.newPostText;
-this._state.profilePage.newPostText = '';   this._state.profilePage.posts.push({id:9,message: text , likeCount: 9});
-this._callSubscriber(this._state);
-      }
       
-      else if 
-        (action.type === 'UPDATE_NEW_POST')        {    
-          this._state.profilePage.newPostText = action.newText;
- this._callSubscriber(this._state);          
-         
-          }
-      else  if (action.type === 'UPDATE_NEW_MESSAGE_BODY'){
-        this._state.dialogsPage.newMessageBody = action.body;
- this._callSubscriber(this._state);
-            } 
-      else if (action.type === 'SEND_MESSAGE'){
-        let body = this._state.dialogsPage.newMessageBody;
-this._state.dialogsPage.newMessageBody = '';
-this._state.dialogsPage.messages.push({id: 7, message: body });
-this._callSubscriber(this._state);
-      }
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+      
+           
+      this._callSubscriber(this._state);
               },
 
  Subscribe(observer) { 
