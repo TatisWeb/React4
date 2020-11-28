@@ -3,9 +3,14 @@
     margin: 20px;
 }
 
+.vrem{
+  color: yellow;
+  font-size: 50px;
+}
 
 .active {
-    color:red;
+    color:yellow;
+    font-weight: 900;
 }
 .text_logo {
     color : orange;

@@ -8,7 +8,7 @@ return <div className={s.untext}>{props.message} </div>
 
 const Post = (props) => { 
   
-  let state = props.store.getState().profilePage;
+  let state = props.profilePage;
 
   let profileElements = state.posts.map( f => 
      <ProfileName message={f.message} id={f.id} />);
@@ -16,14 +16,12 @@ const Post = (props) => {
   let newPostText = state.newPostText;
   
   
-  let onSendNewMessage = (e) =>{
-  let text = e.target.value;
-    props.store.dispatch(updateNewPostCreator(text));
+  let onSendNewMessage = (text) =>{
+  props.updateNewPostText(text);
     
-  
     }
-  let onClickNewPost = () => {props.store.dispatch(addNewPostCreator())
-      };
+  let onClickNewPost = () => { props.addNewPost();
+    };
     
 
 

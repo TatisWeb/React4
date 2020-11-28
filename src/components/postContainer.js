@@ -1,12 +1,13 @@
 import React from 'react';
 import s from './Post.module.css';
 import {addNewPostCreator, updateNewPostCreator} from '../redux/profile-reducer';
+import Post from "./Post";
 
 const ProfileName = (props) =>{
 return <div className={s.untext}>{props.message} </div>
 }
 
-const Post = (props) => { 
+const PostsContainer = (props) => { 
   
   let state = props.store.getState().profilePage;
 
@@ -30,24 +31,8 @@ const Post = (props) => {
 
     return( 
      
-     <div className="post-item">
-     <div className={s.item}> 
-    
-     <img className="img-post" src="https://i.ibb.co/Fzxbqzn/nastol-com-ua-138035.jpg" alt="post"/>
-       <p > New Post</p>
-     <div> Name { profileElements } </div>
-     </div>
-     
-     <div className={s.btn}>
-     <textarea placeholder='send new message'
-     onChange={onSendNewMessage}
-     value={newPostText}
-     
-       ></textarea>
-     <button onClick={onClickNewPost}>Add New Message </button>   
-     </div>
-     
-    </div>);
-}
-
-export default Post;
+  
+      <Post updateNewPostText={onSendNewMessage} addNewPost={onClickNewPost} profilePage={state}/>
+);
+      }
+export default PostsContainer;
