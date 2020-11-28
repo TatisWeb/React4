@@ -2,14 +2,17 @@ import React from 'react';
 import s from './Post.module.css';
 import {addNewPostCreator, updateNewPostCreator} from '../redux/profile-reducer';
 import Post from "./Post";
+import StoreContext from './store-context';
 
 const ProfileName = (props) =>{
 return <div className={s.untext}>{props.message} </div>
 }
 
-const PostsContainer = (props) => { 
+const PostsContainer = () => { 
   
-  let state = props.store.getState().profilePage;
+    return <StoreContext.Consumer> 
+      { store => {
+       let state = store.getState().profilePage;
 
   let profileElements = state.posts.map( f => 
      <ProfileName message={f.message} id={f.id} />);
@@ -19,20 +22,23 @@ const PostsContainer = (props) => {
   
   let onSendNewMessage = (e) =>{
   let text = e.target.value;
-    props.store.dispatch(updateNewPostCreator(text));
+    store.dispatch(updateNewPostCreator(text));
     
   
     }
-  let onClickNewPost = () => {props.store.dispatch(addNewPostCreator())
+  let onClickNewPost = () => {store.dispatch(addNewPostCreator())
       };
     
+       
+return  <Post updateNewPostText={onSendNewMessage} 
+  addNewPost={onClickNewPost}
+  profilePage={state}/>
 
-
-
-    return( 
-     
-  
-      <Post updateNewPostText={onSendNewMessage} addNewPost={onClickNewPost} profilePage={state}/>
-);
       }
+      }
+</StoreContext.Consumer>
+
+}
+
+
 export default PostsContainer;

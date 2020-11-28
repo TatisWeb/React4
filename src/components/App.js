@@ -17,8 +17,8 @@ const App = props => {
         <Navbar />
 
         <Route path="/content" component={Content} />
-        <Route path="/post"    render={() => <PostContainer store={props.store} />} />
-        <Route path="/dialogs" render={() => <DialogsContainer store={props.store} />} />
+        <Route path="/post"    render={() => <PostContainer />} />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/profile" render={() => <Profile />} />
       </div>
     </BrowserRouter>

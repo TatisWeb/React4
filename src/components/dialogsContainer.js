@@ -6,8 +6,10 @@ import {sendMessageCreator,
         updateNewMessageBodyCreator
 } from "../redux/dialogs-reducer";
 
+import StoreContext from './store-context';
 
-const DialogItem = props => {
+
+const DialogItem = (props) => {
   let path = "/dialogs/" + props.id;
 
   return (
@@ -17,29 +19,33 @@ const DialogItem = props => {
   );
 };
 
-const Message = props => {
+const Message = (props) => {
   return <div className={s.untext}>{props.message} </div>;
   let state = props.state.getState().dialogsPage;
 };
 
-const DialogsContainer = props => {
-  
-  let state = props.store.getState().dialogsPage;
+const DialogsContainer = () => {
+  return (
+          <StoreContext.Consumer> 
+         { (store) => {
+  let state = store.getState().dialogsPage;
 
   let onSendMessageClick = () => {
-    props.store.dispatch(sendMessageCreator());
+    store.dispatch(sendMessageCreator());
   };
 
   let onNewMessageChange = body => {
-    props.store.dispatch(updateNewMessageBodyCreator(body));
+    store.dispatch(updateNewMessageBodyCreator(body));
   };
-
-  return (
-    <Dialogs
+                  
+   return <Dialogs
       updateNewMessageBody={onNewMessageChange}
       sendMessageBody={onSendMessageClick}
       dialogsPage={state}
-    />
+    />    
+          }
+          }
+          </StoreContext.Consumer>
   );
 };
 
