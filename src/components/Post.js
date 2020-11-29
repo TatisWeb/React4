@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./Post.module.css";
+import './Post.module.css';
 
 const ProfileName = props => {
   return <div className={s.untext}>{props.message} </div>;
@@ -32,7 +33,7 @@ const Post = props => {
           alt="post"
         />
         <p> New Post</p>
-        <div> Name {profileElements} </div>
+        <div className="text"> Name: {profileElements} </div>
       </div>
 
       <div className={s.btn}>

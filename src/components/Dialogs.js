@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Post.module.css";
 import { NavLink } from "react-router-dom";
 import DialogsContainer from "./dialogsContainer";
+import './Post.module.css';
 
 const DialogItem = props => {
   let path = "/dialogs/" + props.id;
