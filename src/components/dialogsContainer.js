@@ -1,52 +1,31 @@
 import React from "react";
 import Dialogs from "./Dialogs";
-import s from "./Post.module.css";
-import { NavLink } from "react-router-dom";
-import {sendMessageCreator,
-        updateNewMessageBodyCreator
+import {
+  sendMessageCreator,
+  updateNewMessageBodyCreator
 } from "../redux/dialogs-reducer";
 
-import StoreContext from './store-context';
+import { connect } from "react-redux";
 
-
-const DialogItem = (props) => {
-  let path = "/dialogs/" + props.id;
-
-  return (
-    <div className={s.dialog + " " + s.active}>
-      <NavLink to={path}>{props.name}</NavLink>
-    </div>
-  );
-};
-
-const Message = (props) => {
-  return <div className={s.untext}>{props.message} </div>;
-  let state = props.state.getState().dialogsPage;
-};
-
-const DialogsContainer = () => {
-  return (
-          <StoreContext.Consumer> 
-         { (store) => {
-  let state = store.getState().dialogsPage;
-
-  let onSendMessageClick = () => {
-    store.dispatch(sendMessageCreator());
+let mapStateToProps = state => {
+  return {
+    dialogsPage: state.dialogsPage
   };
-
-  let onNewMessageChange = body => {
-    store.dispatch(updateNewMessageBodyCreator(body));
-  };
-                  
-   return <Dialogs
-      updateNewMessageBody={onNewMessageChange}
-      sendMessageBody={onSendMessageClick}
-      dialogsPage={state}
-    />    
-          }
-          }
-          </StoreContext.Consumer>
-  );
 };
+
+let mapDispatchToProps = dispatch => {
+  return {
+    onSendMessageClick: () => {
+      dispatch(sendMessageCreator());
+    },
+    onNewMessageChange: body => {
+      dispatch(updateNewMessageBodyCreator(body));
+    }
+  };
+};
+const DialogsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dialogs);
 
 export default DialogsContainer;

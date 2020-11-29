@@ -16,12 +16,6 @@ let renderEntireTree = (state) => {
   );
 };
 
-renderEntireTree(store.getState());
-
-store.subscribe( () => {
-  let state = store.getState();
-  renderEntireTree(state);
-
-} );
+renderEntireTree();
 
 export default renderEntireTree;

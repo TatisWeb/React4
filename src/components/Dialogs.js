@@ -16,7 +16,7 @@ const DialogItem = props => {
 const Message = props => {
   return <div className={s.untext}>{props.message} </div>;
 
-  let state = props.state.getState().dialogsPage;
+  let state = props.dialogsPage;
 };
 
 const Dialogs = props => {
@@ -33,12 +33,12 @@ const Dialogs = props => {
   ));
 
   let onSendMessageClick = () => {
-    props.sendMessageBody();
+    props.onSendMessageClick();
   };
-
+  
   let onNewMessageChange = e => {
     let body = e.target.value;
-    props.updateNewMessageBody(body);
+    props.onNewMessageChange(body);
   };
 
   return (
