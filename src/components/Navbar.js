@@ -13,9 +13,10 @@ return(
   <div> <NavLink to="/Profile" activeClassName={s.active}> News </NavLink> </div>
   <div> <NavLink to="/Dialogs" activeClassName={s.active}> Music </NavLink> </div>
   <div> <NavLink to="/Content" activeClassName={s.active}> Settings </NavLink> </div>
+  <div> <NavLink to="/Users"   activeClassName={s.active_n}> Find users </NavLink> </div>
   
-  </nav> 
-  </div>
+    </nav>
+   </div>
   );
   
   };

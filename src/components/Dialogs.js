@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Post.module.css";
 import { NavLink } from "react-router-dom";
-import DialogsContainer from "./dialogsContainer";
 import './Post.module.css';
 
 const DialogItem = props => {
@@ -16,9 +15,7 @@ const DialogItem = props => {
 
 const Message = props => {
   return <div className={s.untext}>{props.message} </div>;
-
-  let state = props.dialogsPage;
-};
+}
 
 const Dialogs = props => {
   let state = props.dialogsPage;
